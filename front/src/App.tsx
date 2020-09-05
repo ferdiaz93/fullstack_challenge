@@ -1,24 +1,41 @@
 import React from 'react';
-import logo from './logo.svg';
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+
 import './App.css';
 
+const useStyles = makeStyles({
+  root: {
+    flexGrow: 1,
+  },
+  customLabelColor: {
+    color:"#790909"
+  }
+});
+
 function App() {
+  const classes = useStyles();
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event:any, newValue:any) => {
+    setValue(newValue);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <Paper className={classes.root}>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          indicatorColor="primary"
+          textColor="primary"
+          centered
         >
-          Learn React
-        </a>
-      </header>
+          <Tab label="Modelos" classes={{textColorPrimary: classes.customLabelColor}} />
+          <Tab label="Ficha de model" />
+        </Tabs>
+      </Paper>
     </div>
   );
 }
