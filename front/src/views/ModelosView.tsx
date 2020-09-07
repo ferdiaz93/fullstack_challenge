@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import '../styles/modelosView.css'
+import Vehicle from '../components/Vehicle';
 
 function ModelosView(){
+  const [vehicles, setVehicles] = useState([{
+    brandName: "TEST",
+    year: "2009",
+    price: "500",
+    imgUrl: "testing"
+  }]);
+
     return (
       <main className="container mt-5 px-0">
         <h1 className="text-left">Descubri todos los modelos</h1>
@@ -27,6 +35,13 @@ function ModelosView(){
           <div className="col-md-2">
             Ordernar por
           </div>
+        </div>
+        <div>
+          {vehicles.map((item, i) => {
+            return(
+              <Vehicle vehicle={item} key={i}/>
+            )
+          })}
         </div>
       </main>
     )
