@@ -37,11 +37,7 @@ function ModelosView(){
           </div>
         </div>
         <div>
-          {vehicles.map((item, i) => {
-            return(
-              <Vehicle vehicle={item} key={i}/>
-            )
-          })}
+          {vehicles.map((item, i) => <Vehicle vehicle={item} key={i}/>)}
         </div>
       </main>
     )
