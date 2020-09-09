@@ -8,7 +8,7 @@ class Vehicle extends Model
 {
     protected $table = "tbl_vehicle";
 
-    public function ncaaFiles(){
+    public function vehicleDetail(){
         return $this->hasMany('App\Models\VehicleDetail','vehicle_id');
     }
 
