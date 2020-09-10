@@ -38,7 +38,7 @@ function Vehicle(props:any):JSX.Element{
         <h4>{props.vehicle.brandName}</h4>
         <p>{props.vehicle.year} | {props.vehicle.price}</p>
         <div className="vehicle-container">
-          <img src={'http://localhost:8000/' + props.vehicle.main_img_url} alt=""/>
+          <img src={props.vehicle.main_img_url} alt=""/>
         </div>
         <div className="container-button">
           {!isShown ? null : (
