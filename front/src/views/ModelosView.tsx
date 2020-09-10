@@ -8,7 +8,7 @@ function ModelosView():JSX.Element{
 
   useEffect(() => {
     async function getData(){
-      let response = await fetch('http://localhost:8000/api/get-vehicles')
+      let response = await fetch('/api/get-vehicles')
       let data:IResponse = await response.json();
       setVehicles(data.response)
     }
