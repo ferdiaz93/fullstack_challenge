@@ -17,9 +17,4 @@ $ php artisan migrate
 $ php artisan serve
 ```
 
-Iniciar frontend
-```sh
-$ cd front
-$ npm install
-$ npm start
-```
+Entrar a 'http://localhost:8000'
