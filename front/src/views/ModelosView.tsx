@@ -1,10 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import '../styles/modelosView.css'
 import Vehicle from '../components/Vehicle';
 
 function ModelosView(){
-  const [vehicles, setVehicles] = useState([{
+
+  useEffect(() => {
+    async function getData(){
+      const response = await fetch('http://localhost:8000/api/get-vehicles')
+      const data = await response.json();
+      setVehicles(data.vehicles)
+    }
+    getData();
+  }, [])
+
+
+  const [vehicles, setVehicles] = useState<any>([{
     brandName: "TEST",
     year: "2009",
     price: "500",
@@ -36,8 +47,8 @@ function ModelosView(){
             Ordernar por
           </div>
         </div>
-        <div>
-          {vehicles.map((item, i) => <Vehicle vehicle={item} key={i}/>)}
+        <div className="col-md-12 row px-5 mt-5">
+          {vehicles.map((item:any) => <div className="col-md-4 my-5"><Vehicle vehicle={item} key={item.id}/></div>)}
         </div>
       </main>
     )

@@ -13,7 +13,8 @@ a{
 }
 
 a:hover{
-    color:black;
+    background-color: #373737;
+    color:white!important;
 }
 
 .nav-item{
