@@ -5,6 +5,7 @@
 .vehicle-container>img{
     padding: 5px;
     width: 100%;
+    min-height: 150px;
 }
 
 .select-vehicle:hover{

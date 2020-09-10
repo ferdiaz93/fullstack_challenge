@@ -2,28 +2,23 @@ import React, { useState, useEffect } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import '../styles/modelosView.css'
 import Vehicle from '../components/Vehicle';
+import { IVehicle, IResponse } from '../interfaces'
 
-function ModelosView(){
+function ModelosView():JSX.Element{
 
   useEffect(() => {
     async function getData(){
-      const response = await fetch('http://localhost:8000/api/get-vehicles')
-      const data = await response.json();
-      setVehicles(data.vehicles)
+      let response = await fetch('http://localhost:8000/api/get-vehicles')
+      let data:IResponse = await response.json();
+      setVehicles(data.response)
     }
     getData();
   }, [])
 
-
-  const [vehicles, setVehicles] = useState<any>([{
-    brandName: "TEST",
-    year: "2009",
-    price: "500",
-    imgUrl: "testing"
-  }]);
+  const [vehicles, setVehicles] = useState<IVehicle[]>([]);
 
     return (
-      <main className="container mt-5 px-0">
+      <main className="container mt-5 px-0 default-size">
         <h1 className="text-left">Descubri todos los modelos</h1>
         <div className="filters-container mt-5 row mx-0 align-items-center">
           <div className="mr-5 col-6 col-md-1">Filtrar por</div>
@@ -47,9 +42,11 @@ function ModelosView(){
             Ordernar por
           </div>
         </div>
-        <div className="col-md-12 row px-5 mt-5">
-          {vehicles.map((item:any) => <div className="col-md-4 my-5"><Vehicle vehicle={item} key={item.id}/></div>)}
-        </div>
+        {vehicles.length == 0 ? null : (
+          <div className="col-md-12 row px-5 mt-5">
+            {vehicles.map((item:any) => <div className="col-md-4 my-5"><Vehicle vehicle={item} key={item.id}/></div>)}
+          </div>
+        )}
       </main>
     )
 }

@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Vehicle(props:any) {
+function Vehicle(props:any):JSX.Element{
   const classes = useStyles();
   const [isShown, setIsShown] = useState<boolean>(false);
 

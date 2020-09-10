@@ -20,3 +20,7 @@ a:hover{
 .nav-item{
     margin: 0px 40px;
 }
+
+.default-size{
+    min-height: 600px;
+}

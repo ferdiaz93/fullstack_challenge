@@ -9,6 +9,6 @@ class VehicleController extends Controller
 {
     public function getVehicles(){
         $vehicles = Vehicle::with('vehicleDetail')->get();
-        return response()->json(['success' => true, 'message' => 'OK', 'vehicles' => $vehicles]);
+        return response()->json(['success' => true, 'message' => 'OK', 'response' => $vehicles]);
     }
 }
